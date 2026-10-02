@@ -1,12 +1,24 @@
-  document.addEventListener('DOMContentLoaded', () => {
-  const target = document.querySelector('#headline-d107e476 h3');
+(() => {
+  const selector = '#headline-d107e476 h3';
+  const updateTarget = () => {
+    const target = document.querySelector(selector);
 
-  if (target) {
+    if (!target) {
+      return false;
+    }
+
     target.textContent = 'HI | Tarek Here,';
     console.log('Target found:', target);
-  } else {
-    console.log('Target NOT found');
-  }
-});
+    return true;
+  };
 
-console.log('script.js is connected');
+  if (!updateTarget()) {
+    const observer = new MutationObserver(() => {
+      if (updateTarget()) {
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  }
+})();

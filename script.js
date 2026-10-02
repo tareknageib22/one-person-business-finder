@@ -1,3 +1,3 @@
-const section =document.querySelector('#section-f7eefda9');
+const section = document.querySelector('#section-f7eefda9');
 
 console.log(section);

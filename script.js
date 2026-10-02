@@ -1,15 +1,3 @@
-(() => {
-  const button = document.querySelector("#count-button");
-  const countDisplay = document.querySelector("#click-count");
+const section =document.querySelector('#section-f7eefda9');
 
-  if (!button || !countDisplay) {
-    return;
-  }
-
-  let count = 0;
-
-  button.addEventListener("click", () => {
-    count += 1;
-    countDisplay.textContent = String(count);
-  });
-})();
+console.log(section);

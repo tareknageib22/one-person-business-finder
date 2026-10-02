@@ -58,6 +58,14 @@ if ($LASTEXITCODE -ne 0) {
 $owner = $githubRepo.Groups["owner"].Value
 $repository = $githubRepo.Groups["repo"].Value -replace "\.git$", ""
 $cdnUrl = "https://cdn.jsdelivr.net/gh/$owner/$repository@$branch/script.js"
+$purgeUrl = $cdnUrl -replace "^https://cdn\.jsdelivr\.net", "https://purge.jsdelivr.net"
+try {
+  Invoke-RestMethod -Uri $purgeUrl -Method Get | Out-Null
+  Write-Host "Requested jsDelivr cache refresh."
+} catch {
+  Write-Warning "GitHub push succeeded, but jsDelivr cache refresh failed. Retry: $purgeUrl"
+}
+
 Write-Host "Published branch '$branch'."
 Write-Host "jsDelivr URL: $cdnUrl"
 Write-Host "Script tag: <script src=`"$cdnUrl`"></script>"

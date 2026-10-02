@@ -10,7 +10,7 @@ From PowerShell, run:
 .\publish.ps1 "Describe your update"
 ```
 
-The script stages all non-ignored changes, creates a commit when there are staged changes, pushes the current branch to `origin`, and prints the jsDelivr URL for `script.js`. Use that URL in your website to load the latest version from the pushed branch. CDN updates may take a short time to appear.
+The script stages all non-ignored changes, creates a commit when there are staged changes, pushes the current branch to `origin`, requests a jsDelivr cache refresh, and prints the CDN URL for `script.js`. Use that URL in your website to load the latest version from the pushed branch.
 
 If this project has not been connected to GitHub yet, create a repository on GitHub and add it as `origin` before running the script:
 

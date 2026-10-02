@@ -2,7 +2,7 @@
   const target = document.querySelector('#headline-d107e476 h3');
 
   if (target) {
-    target.textContent = 'husein el shreif | Hi';
+    target.textContent = 'HI | Tarek Here,';
     console.log('Target found:', target);
   } else {
     console.log('Target NOT found');
